@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SurvivalStarcraft</title>
-  <%= stylesheet_link_tag :all %>
+  <title><%= title %></title>
+  <%= render "layouts/stylesheets" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
-
+<div class="container">
+  <%= render "layouts/header" %>
+  <%= link_to banner, root_path %>
+  <section class="round">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </section>
+  <%= render "layouts/footer" %>
+  <%= render "layouts/debug" if Rails.env.development? %>
+</div>
 </body>
 </html>

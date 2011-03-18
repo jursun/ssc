@@ -1,0 +1,77 @@
+.container {
+  width: 1000px;
+}
+
+body {
+  background: #000;
+}
+
+header {
+  padding-top: 20px;
+}
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+  background: #fff;
+}
+
+footer {
+  text-align: center;
+  width: 1000px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+/* General Navigation */
+
+nav {
+  float: right;
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+/* Override nav settings */
+
+header nav {
+  background-color: #faf0e6;
+}
+
+footer nav {
+  float: none;
+}
+
+/* Debug Footer for Development */
+
+footer dev {
+  color: white;
+  text-align: left;
+}
