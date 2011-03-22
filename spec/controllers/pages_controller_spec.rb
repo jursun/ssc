@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe PagesController do
 
-  describe "get page HOME" do
+  describe "GET Page home" do
     it "it should exist" do
       get 'home'
       response.should be_success
     end
   end
 
-  describe "get page CONTACT" do
+  describe "GET Page contact" do
     it "it should exist" do
       get 'contact'
       response.should be_success

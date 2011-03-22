@@ -8,6 +8,7 @@ group(:development, :test) do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'webrat'
+  gem 'factory_girl_rails'
 end
 
 # Bundle edge Rails instead:
