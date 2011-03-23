@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe UsersController do
 
+  describe 'GET User index' do
+    it 'should exist' do
+      get :index
+      response.should be_success
+    end
+  end
+
   describe 'GET User show' do
 
     before(:each) do

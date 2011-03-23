@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(:version => 20110316060318) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
-    t.string   "name"
+    t.string   "username"
     t.string   "profile"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
