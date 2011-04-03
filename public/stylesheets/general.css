@@ -65,6 +65,10 @@ header nav {
   background-color: #faf0e6;
 }
 
+navigation nav {
+  float: none;
+}
+
 footer nav {
   float: none;
 }
@@ -127,4 +131,18 @@ ul.users {
 
 .users li {
   list-style: none;
+}
+
+table {
+  border: 1px solid black;
+  width: 470px;
+}
+
+table tr th {
+  text-align: center;
+  background-color: #b0c4de;
+}
+
+table tr td {
+  font-size: 12px;
 }
