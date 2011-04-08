@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110316060318) do
+ActiveRecord::Schema.define(:version => 20110405064255) do
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.string   "league"
+    t.datetime "start_dt"
+    t.datetime "end_dt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tournaments", ["name", "league"], :name => "index_tournaments_on_name_and_league", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

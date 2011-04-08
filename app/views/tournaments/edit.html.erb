@@ -1,0 +1,23 @@
+<h1><%= @title %></h1>
+
+<%= form_for(@tournament) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :league %><br />
+    <%= f.text_field :league %>
+  </div>
+  <div class="field">
+    <%= f.label :start_dt %><br />
+    <%= f.text_field :start_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :end_dt %><br />
+    <%= f.text_field :end_dt%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

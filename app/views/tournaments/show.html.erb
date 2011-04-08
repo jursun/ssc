@@ -1,0 +1,16 @@
+<h1><%= @title %></h1>
+
+<table>
+  <tr>
+    <td>Start Date:</td>
+    <td><%= @tournament.start_dt.to_date %></td>
+  </tr>
+  <tr>
+    <td>End Date:</td>
+    <td><%= @tournament.end_dt.to_date %></td>
+  </tr>
+</table>
+
+<%= link_to "Edit Tournament", edit_tournament_path %>
+<br/>
+<%= link_to "Delete Tournament", @tournament, :method => :delete, :confirm => "Are you sure?" %>

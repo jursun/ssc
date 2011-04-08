@@ -1,0 +1,12 @@
+<h1><%= @title %></h1>
+
+<p><%= link_to 'Create New Tournament', new_tournament_path %></p>
+
+<ul class="tournaments">
+  <% @tournaments.each do |tournament| %>
+    <li>
+      <%= link_to tournament.league + " - " + tournament.name, tournament %>
+    </li>
+  <% end %>
+</ul>
+
