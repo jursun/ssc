@@ -3,11 +3,11 @@
 <table>
   <tr>
     <td>Start Date:</td>
-    <td><%= @tournament.start_dt.to_date %></td>
+    <td><%= @tournament.get_start_dt %></td>
   </tr>
   <tr>
     <td>End Date:</td>
-    <td><%= @tournament.end_dt.to_date %></td>
+    <td><%= @tournament.get_end_dt %></td>
   </tr>
 </table>
 
