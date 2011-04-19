@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+  before_filter :admin_user, :except => [:show, :index]
+
   def index
     @tournaments = Tournament.all
     @title = "All Tournaments"
@@ -47,4 +49,11 @@ class TournamentsController < ApplicationController
     @tournament.destroy
     redirect_to tournaments_path
   end
+
+  private
+
+  def admin_user
+    redirect_to(root_path) unless current_user.try(:admin?)
+  end
+
 end

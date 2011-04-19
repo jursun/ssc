@@ -1,0 +1,22 @@
+<h1><%= @title %></h1>
+
+<%= form_for(@group) do |f| %>
+  <div class="field">
+    <%= f.label :tournament_id, "Tournament" %><br />
+    <%= f.select(:tournament_id, @tournaments.map {|u| [u.name,u.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <p><br /><%= f.check_box :private %> <%= f.label :private %></p>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

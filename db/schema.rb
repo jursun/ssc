@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405064255) do
+ActiveRecord::Schema.define(:version => 20110415061124) do
+
+  create_table "groups", :force => true do |t|
+    t.integer  "tournament_id"
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "private"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["tournament_id"], :name => "index_groups_on_tournament_id"
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"

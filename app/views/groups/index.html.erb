@@ -1,0 +1,13 @@
+<h1><%= @title %></h1>
+
+<p><%= link_to 'Create New Group', new_group_path %></p>
+
+<table class="groups">
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= link_to group.name, group %></td>
+      <td><%= group.description %></td>
+      <td><% if !group.private? %><%= link_to "JOIN", "#" %><% end %></td>
+    </tr>
+  <% end %>
+</table>

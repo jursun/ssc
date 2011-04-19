@@ -3,12 +3,7 @@ SurvivalStarcraft::Application.routes.draw do
 
   resources :users
   resources :tournaments
-
-  match '/users', :to => 'users#index'
-#  match '/groups', :to => 'groups#index'
-
-  match '/tournaments', :to => 'tournaments#index'
-  match '/tournaments/new', :to => 'tournaments#new'
+  resources :groups
 
   match '/rules', :to => 'pages#rules'
   match '/contact', :to => 'pages#contact'

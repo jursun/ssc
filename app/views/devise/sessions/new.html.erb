@@ -1,7 +1,7 @@
 <h2>Login</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :login %><br />
+  <p><%= f.label :login, "Username or Email (case sensitive)" %><br />
   <%= f.text_field :login %></p>
 
   <p><%= f.label :password %><br />

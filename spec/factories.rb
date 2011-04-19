@@ -11,3 +11,10 @@ Factory.define :tournament do |tournament|
   tournament.start_dt "2011-02-21"
   tournament.end_dt "2011-03-19"
 end
+
+Factory.define :group do |group|
+  group.name "TSH"
+  group.description "Teaml SO-HI"
+  group.private "1"
+  group.association :tournament
+end

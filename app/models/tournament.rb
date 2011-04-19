@@ -6,6 +6,8 @@ class Tournament < ActiveRecord::Base
   validates :league, :presence => true,
             :length => {:maximum => 50}
 
+  has_many :groups, :dependent => :destroy
+
   def get_start_dt
     return "Not Specified" if self.start_dt.nil?
     return self.start_dt

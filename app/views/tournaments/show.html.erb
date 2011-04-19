@@ -11,6 +11,8 @@
   </tr>
 </table>
 
-<%= link_to "Edit Tournament", edit_tournament_path %>
-<br/>
-<%= link_to "Delete Tournament", @tournament, :method => :delete, :confirm => "Are you sure?" %>
+<% if current_user.try(:admin?) %>
+    <%= link_to "Edit Tournament", edit_tournament_path %>
+    <br/>
+    <%= link_to "Delete Tournament", @tournament, :method => :delete, :confirm => "Are you sure?" %>
+<% end %>
