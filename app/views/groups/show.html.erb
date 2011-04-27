@@ -1,1 +1,21 @@
 <h1><%= @title %></h1>
+<p><%= @group.description %></p>
+
+<table class="teams">
+  <% if @teams.empty? %>
+  <tr>
+    <td>No Teams</td>
+  </tr>
+  <% else %>
+  <tr>
+    <td>Team</td>
+    <td>Manager</td>
+  </tr>
+  <% @teams.each do |team| %>
+  <tr>
+    <td><%= link_to team.name, team %></td>
+    <td><%= link_to get_user(team).username, get_user(team) %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

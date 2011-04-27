@@ -4,6 +4,7 @@ gem 'rails', '3.0.5'
 gem 'pg'
 gem 'devise'
 gem 'jquery-rails'
+gem 'faker'
 
 group(:development, :test) do
   gem 'rspec-rails'

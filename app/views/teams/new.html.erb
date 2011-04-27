@@ -1,0 +1,16 @@
+<h1><%= @title %></h1>
+
+<%= form_for(@team) do |f| %>
+  <%= f.hidden_field :admin, :value => '0' %>
+  <div class="field">
+    <%= f.label :group_id, "Group" %><br />
+    <%= f.select(:group_id, @groups.map {|u| [u.name,u.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

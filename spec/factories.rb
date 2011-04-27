@@ -18,3 +18,9 @@ Factory.define :group do |group|
   group.private "1"
   group.association :tournament
 end
+
+Factory.define :team do |team|
+  team.name "RageQuit!"
+  team.association :group
+  team.association :user
+end

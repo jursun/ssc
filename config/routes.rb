@@ -4,6 +4,7 @@ SurvivalStarcraft::Application.routes.draw do
   resources :users
   resources :tournaments
   resources :groups
+  resources :teams
 
   match '/rules', :to => 'pages#rules'
   match '/contact', :to => 'pages#contact'

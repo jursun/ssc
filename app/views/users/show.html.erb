@@ -1,1 +1,25 @@
-<%= @user.username %>, <%= @user.email %>
+<h1><%= @user.username %></h1>
+<p><%= @user.email %><p>
+
+<% if current_user.try(:id) == @user.id %>
+<p><%= link_to 'Create New Team', new_team_path %></p>
+<% end %>
+
+<table class="teams">
+  <% if @teams.empty? %>
+  <tr>
+    <td>No Teams</td>
+  </tr>
+  <% else %>
+  <tr>
+    <td>Team</td>
+    <td>Group</td>
+  </tr>
+  <% @teams.each do |team| %>
+  <tr>
+    <td><%= link_to team.name, team %></td>
+    <td><%= link_to get_group(team).name, get_group(team) %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

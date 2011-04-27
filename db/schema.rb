@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110415061124) do
+ActiveRecord::Schema.define(:version => 20110425031734) do
 
   create_table "groups", :force => true do |t|
     t.integer  "tournament_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20110415061124) do
   end
 
   add_index "groups", ["tournament_id"], :name => "index_groups_on_tournament_id"
+
+  create_table "teams", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "admin"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teams", ["user_id", "group_id"], :name => "index_teams_on_user_id_and_group_id", :unique => true
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"

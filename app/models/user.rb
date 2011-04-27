@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
             :length => {:maximum => 30},
             :uniqueness => {:case_sensitive => false}
 
+  has_many :teams, :dependent => :destroy
+
   protected
 
   def self.find_for_database_authentication(conditions)

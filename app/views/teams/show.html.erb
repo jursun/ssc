@@ -1,0 +1,5 @@
+<h1><%= @title %></h1>
+
+<% if current_user.try(:id) == @team.user_id %>
+    <td><%= link_to "Edit Team", edit_team_path %></td>
+<% end %>

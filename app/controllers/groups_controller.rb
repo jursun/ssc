@@ -8,20 +8,21 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @title = @group.name
+    @teams = Team.all(:conditions => ['group_id = ?', @group.id])
   end
 
   def new
     @group = Group.new
     #Testing Code
     @tournaments = Tournament.all
-#    @tournaments = Tournament.find(:all, :conditions => ['start_dt >= ?', Date.today])
+#    @tournaments = get_joinable_tournaments
     @title = "Create new Group"
   end
 
   def create
     @group = Group.new(params[:group])
     @tournaments = Tournament.all
-#    @tournaments = Tournament.find(:all, :conditions => ['start_dt >= ?', Date.today])
+#    @tournaments = get_joinable_tournaments
     if @group.save
       flash[:success] = "New Group Created!"
       redirect_to @group
@@ -54,4 +55,16 @@ class GroupsController < ApplicationController
     redirect_to group_path
   end
 
+  def get_joinable_tournaments
+    Tournament.all(:conditions => ['start_dt >= ?', Date.today])
+  end
+
+  def get_tournaments_in_progress
+    Tournament.all(:conditions => ['? BETWEEN start_dt AND end_dt', Date.today])
+  end
+
+  def get_past_tournaments
+    Tournament.all(:conditions => ['end_dt < ?', Date.today])
+  end
+  
 end
