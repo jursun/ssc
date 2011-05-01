@@ -46,8 +46,10 @@ class TeamsController < ApplicationController
     redirect_to team_path
   end
 
+  private
+
   def get_public_joinable_groups
-    Group.all(:conditions => ["private = ? AND id NOT IN (SELECT group_id FROM teams WHERE user_id = ?)", 'F', current_user.id])
+    Group.all(:conditions => ["private = 'F' AND id NOT IN (SELECT group_id FROM teams WHERE user_id = ?)", current_user.id])
   end
   
 end

@@ -19,4 +19,5 @@ class PagesController < ApplicationController
   def policy
     @title = "Private Policy"
   end
+  
 end

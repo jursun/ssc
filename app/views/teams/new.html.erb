@@ -1,7 +1,7 @@
 <h1><%= @title %></h1>
 
 <%= form_for(@team) do |f| %>
-  <%= f.hidden_field :admin, :value => '0' %>
+  <%= f.hidden_field :admin, :value => 'F' %>
   <div class="field">
     <%= f.label :group_id, "Group" %><br />
     <%= f.select(:group_id, @groups.map {|u| [u.name,u.id]}) %>

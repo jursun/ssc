@@ -8,13 +8,20 @@ class Tournament < ActiveRecord::Base
 
   has_many :groups, :dependent => :destroy
 
+  def full_name
+    self.league + " " + self.name
+  end
+
   def get_start_dt
-    return "Not Specified" if self.start_dt.nil?
-    return self.start_dt
+    self.start_dt.nil? ? "Not Specified" : self.start_dt
   end
 
   def get_end_dt
-    return "Not Specified" if self.end_dt.nil?
-    return self.end_dt
+    self.end_dt.nil? ? "Not Specified" : self.end_dt
   end
+
+  def get_groups
+    Group.find_all_by_tournament_id(self.id)
+  end
+
 end

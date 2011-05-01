@@ -8,4 +8,9 @@ class Group < ActiveRecord::Base
   belongs_to :tournament
 
   has_many :teams, :dependent => :destroy
+
+  def get_teams
+    Team.find_all_by_group_id(self.id)
+  end
+
 end

@@ -14,4 +14,8 @@ module ApplicationHelper
     image_tag("rails.png", :alt => "Survival Starcraft", :class => "round")
   end
 
+  def tournament_selector
+    select(:tournament, :id, Tournament.all.collect {|u| [u.full_name,u.id]}, { :include_blank => true, :selected => get_tournament_id })
+  end
+
 end

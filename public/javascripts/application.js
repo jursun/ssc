@@ -10,4 +10,8 @@ $(function() {
         ampm: true,
         dateFormat: 'yy-mm-dd'
     });
+    $("#tournament_id").change(function() {
+        document.cookie = 'tournament='+this.value;
+        window.location.reload();
+    });
 });

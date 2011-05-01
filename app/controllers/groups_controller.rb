@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_filter :admin_user, :only => [:edit, :update, :destroy]
+  before_filter :group_admin, :only => [:edit, :update, :destroy]
 
   def index
     @groups = Group.all
@@ -8,21 +10,18 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @title = @group.name
-    @teams = Team.all(:conditions => ['group_id = ?', @group.id])
+    @teams = @group.get_teams
   end
 
   def new
     @group = Group.new
-    #Testing Code
-    @tournaments = Tournament.all
-#    @tournaments = get_joinable_tournaments
+    @tournaments = get_joinable_tournaments
     @title = "Create new Group"
   end
 
   def create
     @group = Group.new(params[:group])
-    @tournaments = Tournament.all
-#    @tournaments = get_joinable_tournaments
+    @tournaments = get_joinable_tournaments
     if @group.save
       flash[:success] = "New Group Created!"
       redirect_to @group
@@ -55,8 +54,11 @@ class GroupsController < ApplicationController
     redirect_to group_path
   end
 
+  private
+
   def get_joinable_tournaments
-    Tournament.all(:conditions => ['start_dt >= ?', Date.today])
+    Tournament.all
+    #Tournament.all(:conditions => ['start_dt >= ?', Date.today])
   end
 
   def get_tournaments_in_progress
@@ -66,5 +68,17 @@ class GroupsController < ApplicationController
   def get_past_tournaments
     Tournament.all(:conditions => ['end_dt < ?', Date.today])
   end
-  
+
+  def admin_user
+    redirect_to(group_path) unless current_user.try(:admin?)
+  end
+
+  def group_admin
+    redirect_to(group_path) unless get_team.admin?
+  end
+
+  def get_team
+    Team.find_by_user_id_and_group_id(current_user.try(:id), params[:id])
+  end
+
 end

@@ -16,10 +16,15 @@ class User < ActiveRecord::Base
 
   has_many :teams, :dependent => :destroy
 
+  def get_teams
+    Team.find_all_by_user_id(self.id)
+  end
+
   protected
 
   def self.find_for_database_authentication(conditions)
     login = conditions.delete(:login)
     where(conditions).where(["username = :value OR email = :value", {:value => login}]).first
   end
+
 end

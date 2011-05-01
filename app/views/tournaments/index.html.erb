@@ -1,12 +1,14 @@
 <h1><%= @title %></h1>
 
-<p><%= link_to 'Create New Tournament', new_tournament_path %></p>
+<% if current_user.try(:admin?) %>
+    <p><%= link_to 'Create New Tournament', new_tournament_path %></p>
+<% end %>
 
 <ul class="tournaments">
   <% @tournaments.each do |tournament| %>
-    <li>
-      <%= link_to tournament.league + " - " + tournament.name, tournament %>
-    </li>
+      <li>
+        <%= link_to tournament.full_name, tournament %>
+      </li>
   <% end %>
 </ul>
 
