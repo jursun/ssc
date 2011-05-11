@@ -45,7 +45,7 @@ end
 
 def make_groups
   Tournament.all.each do |tournament|
-    10.times do |n|
+    5.times do |n|
       name = Faker::Company.name
       description = Faker::Company.catch_phrase
       tournament.groups.create!(:name => name,

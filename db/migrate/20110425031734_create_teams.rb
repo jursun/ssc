@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer :user_id
       t.integer :group_id
       t.boolean :admin
-      t.string :name
+      t.string :status
 
       t.timestamps
     end

@@ -1,10 +1,9 @@
 class Team < ActiveRecord::Base
-  attr_accessible :group_id, :admin, :name
+  attr_accessible :group_id, :admin, :status
 
   validates :user_id, :presence => true
   validates :group_id, :presence => true
-  validates :name, :presence => true,
-            :length => {:maximum => 50}
+  validates :status, :length => {:maximum => 10}
 
   validates_each :user_id, :on => :create do |record, attr, value|
     u = value; g = record.group_id

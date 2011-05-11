@@ -20,7 +20,7 @@ Factory.define :group do |group|
 end
 
 Factory.define :team do |team|
-  team.name "RageQuit!"
+  team.status "P"
   team.association :group
   team.association :user
 end

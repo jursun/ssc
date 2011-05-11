@@ -1,10 +1,10 @@
 <navigation>
   <nav class='round'>
     <ul>
-      <li><%= link_to "Users", users_path %></li>
       <% if user_signed_in? %>
-      <li><%= link_to "My Teams", user_path(current_user.id) %></li>
+      <li><%= link_to "Home", user_path(current_user.id) %></li>
       <% end %>
+      <li><%= link_to "Users", users_path %></li>
       <li><%= link_to "Groups", groups_path %></li>
       <li><%= link_to "Matches", "#" %></li>
       <li><%= link_to "Players", '#' %></li>

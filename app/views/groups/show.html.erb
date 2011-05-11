@@ -1,6 +1,6 @@
 <h1><%= @title %></h1>
+<h3><%= @group.tournament.full_name %></h3>
 <p><%= @group.description %></p>
-
 <table class="teams">
   <% if @teams.empty? %>
   <tr>
@@ -8,13 +8,13 @@
   </tr>
   <% else %>
   <tr>
-    <td>Team</td>
-    <td>Manager</td>
+    <td>User</td>
+    <td>Points</td>
   </tr>
   <% @teams.each do |team| %>
   <tr>
-    <td><%= link_to team.name, team %></td>
     <td><%= link_to team.user.username, team.user %></td>
+    <td>&nbsp;</td>
   </tr>
   <% end %>
   <% end %>

@@ -5,7 +5,7 @@ describe Team do
     @user = Factory(:user)
     @group = Factory(:group)
     @attr = {
-        :name => "TSH",
+        :status => "P",
         :group_id => @group.id
     }
   end
@@ -19,12 +19,12 @@ describe Team do
       Team.new(@attr).should_not be_valid
     end
 
-    it "should require a team name" do
-      @user.teams.build(@attr.merge(:name => "")).should_not be_valid
+    it "should require a team status" do
+      @user.teams.build(@attr.merge(:status => "")).should_not be_valid
     end
 
-    it "should reject team names that are too long" do
-      @user.teams.build(@attr.merge(:name => "z" * 51)).should_not be_valid
+    it "should reject team status that are too long" do
+      @user.teams.build(@attr.merge(:status => "z" * 11)).should_not be_valid
     end
   end
 

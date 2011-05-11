@@ -1,5 +1,10 @@
 <footer>
   <dev>
+    <% if current_user.try(:admin?) %>
+        <p>***ADMIN USER***</p>
+    <% else %>
+        <p>***NOT ADMIN USER***</p>
+    <% end %>
     <%= debug(params) %>
     <%= debug(get_tournament_name) %>
     <%= debug(cookies[:tournament]) %>

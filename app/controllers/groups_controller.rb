@@ -3,8 +3,8 @@ class GroupsController < ApplicationController
   before_filter :group_admin, :only => [:edit, :update, :destroy]
 
   def index
-    @groups = Group.all
-    @title = "All Groups"
+    @groups = get_public_groups
+    @title = "All Public Groups"
   end
 
   def show
@@ -55,6 +55,14 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def get_public_groups
+    if selected_tournament.nil?
+      Group.find_all_by_private('F')
+    else
+      Group.find_all_by_private_and_tournament_id('F', selected_tournament.id)
+    end
+  end
 
   def get_joinable_tournaments
     Tournament.all

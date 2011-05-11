@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20110425031734) do
     t.integer  "user_id"
     t.integer  "group_id"
     t.boolean  "admin"
-    t.string   "name"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,9 +2,17 @@
 <p><%= @user.email %><p>
 
 <% if current_user.try(:id) == @user.id %>
-<p><%= link_to 'Create New Team', new_team_path %></p>
+<%= form_for(@team) do |f| %>
+  <div class="field">
+    <%= f.label :group_id, "Join Private Group" %><br />
+    <%= f.select(:group_id, @groups.map {|u| [u.name,u.id]}) %>
+    <%= f.hidden_field :admin, :value => 'F' %>
+    <%= f.hidden_field :status, :value => 'P' %>
+    <%= f.submit "Join" %>
+  </div>
 <% end %>
-
+<% end %>
+<br />
 <table class="teams">
   <% if @teams.empty? %>
   <tr>
@@ -12,13 +20,16 @@
   </tr>
   <% else %>
   <tr>
-    <td>Team</td>
+    <td>Tournament</td>
     <td>Group</td>
+    <td>Rank</td>
   </tr>
   <% @teams.each do |team| %>
   <tr>
-    <td><%= link_to team.name, team %></td>
-    <td><%= link_to get_group(team).name, get_group(team) %></td>
+    <td><%= link_to team.group.tournament.full_name, team.group.tournament %></td>
+    <td><%= link_to team.group.name, team.group %> <% if team.group.private? %> (Private)<% end %></td>
+    <td></td>
+    <td>&nbsp;</td>
   </tr>
   <% end %>
   <% end %>
